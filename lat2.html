@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>lat2</title>
+</head>
+<body>
+    <div id="lat2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <script src="lat2.js"></script>
+    <script>
+        var lat2 = new Vue({
+            el : '#lat2',
+                data : {
+                    name : 'Rico Ramada'
+                },
+                methods : {
+                    greet : function (event){
+                        alert ('Hello ' + this.name + '!')
+                    }
+                }
+        });
+        vm.greet();
+    </script>
+</body>
+</html>

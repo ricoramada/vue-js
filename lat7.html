@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Latihan 6</title>
+</head>
+<body>
+    <div id="app">
+        <h3>Masukan Nama GURU</h3>
+        <form @submit.prevent>
+            <input type="text" name="namaSiswa" id="namaSiswa" @keyup.enter="simpan" v-model="guru">
+            <button type="button" @click="simpan">SAVE</button>
+        </form>
+        <br>
+        <br>
+        <table border="1" style="border-collapse: collapse" v-if="dataGuru.length > 0">
+            <tr>
+                <thead>
+                    <th style="width: 30px">#</th>
+                    <th style="width: 200px">Nama Guru</th>
+                </thead>
+            </tr>
+            <tr>
+                <tbody v-for="(guru, index) in dataGuru" :key="index">
+                    <td>{{index+1}}</td>
+                    <td>{{guru}}</td>
+                </tbody>
+            </tr>
+        </table>
+        <h4 v-else>Tidak Ada data</h4>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                guru: '',
+                dataGuru: [
+                    {'nama' : 'arya', 'kelas' : 'XIIRPL2'},
+                    {'nama' : 'pipo', 'kelas' : 'XIIRPL3'},
+                    {'nama' : 'lala', 'kelas' : 'XIIRPL1'},
+                    {'nama' : 'rodi', 'kelas' : 'XIIRPL5'}
+                ]
+            },
+            methods: {
+                simpan(){
+                    if(this.guru.trim()){
+                        this.dataGuru.push(this.guru);
+                        this.guru = '';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
